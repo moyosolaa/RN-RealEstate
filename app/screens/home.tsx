@@ -11,6 +11,10 @@ import { SearchBar } from "../components/SearchBar";
 import { PropertyCard } from "../components/PropertyCard";
 import { Chip } from "../components/Chip";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { CompositeScreenProps } from "@react-navigation/native";
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { TabParamList, RootStackParamList } from "../types/navigation";
 
 import {
   CATEGORIES,
@@ -18,10 +22,15 @@ import {
   RECOMMENDED_PROPERTIES,
 } from "../constants/properties";
 
-export default function HomeScreen() {
+type Props = CompositeScreenProps<
+  BottomTabScreenProps<TabParamList, "Home">,
+  NativeStackScreenProps<RootStackParamList>
+>;
+
+export default function HomeScreen({ navigation }: Props) {
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView edges={["top"]} className="flex-1 bg-white">
+      {/* <StatusBar barStyle="dark-content" /> */}
       <ScrollView className="flex-1">
         {/* Header */}
         <View className="flex-row items-center justify-between px-4 py-2 mb-2">

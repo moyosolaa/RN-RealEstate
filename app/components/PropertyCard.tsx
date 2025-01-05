@@ -71,7 +71,7 @@ export function PropertyCard({
           <Text className="text-lg font-bold">{title}</Text>
           <Text className="text-gray-500">{location}</Text>
           <View className="flex-row justify-between items-center mt-2">
-            <Text className="text-[#246BFD] text-lg font-bold">${price}</Text>
+            <Text className="text-[#8B5DFF] text-lg font-bold">${price}</Text>
             <TouchableOpacity>
               <View className="w-8 h-8 items-center justify-center">
                 <AntDesign name="hearto" size={16} color="black" />

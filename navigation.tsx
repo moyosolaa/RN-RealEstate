@@ -1,14 +1,14 @@
 import OnboardingScreen from "./app/screens/onboarding";
 import HomeScreen from "./app/screens/home";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  NavigatorScreenParams,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RootStackParamList, TabParamList } from "./app/types/navigation";
+import { TabNavigator } from "./app/navigation/TabNavigator";
 
-export type StackScreens = {
-  Onboarding: undefined;
-  Home: undefined;
-};
-
-const Stack = createNativeStackNavigator<StackScreens>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function Navigation() {
   return (
@@ -18,7 +18,7 @@ export default function Navigation() {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Main" component={TabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

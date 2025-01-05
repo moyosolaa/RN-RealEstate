@@ -3,8 +3,8 @@ import { Button } from "../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { StackScreens } from "../../navigation";
 import { LinearGradient } from "expo-linear-gradient";
+import { RootStackParamList } from "../types/navigation";
 
 const GRID_IMAGES = [
   require("../../assets/houses/house1.jpg"),
@@ -19,7 +19,8 @@ const GRID_IMAGES = [
 ];
 
 export default function OnboardingScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<StackScreens>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <SafeAreaView className="flex-1" edges={["right", "left", "top"]}>
       <View className="h-full justify-center">
@@ -67,7 +68,7 @@ export default function OnboardingScreen() {
             size="lg"
             className="mt-6 border-gray-200"
             onPress={() => {
-              navigation.navigate("Home");
+              navigation.navigate("Main", { screen: "Home" });
             }}
             icon={
               <Image
