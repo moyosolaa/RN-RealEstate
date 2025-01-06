@@ -1,25 +1,44 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { Property } from "../types/property";
+import { Models } from "react-native-appwrite";
 
-interface PropertyCardProps extends Omit<Property, "id"> {
+interface PropertyCardProps extends Omit<Models.Document, "id"> {
   featured?: boolean;
 }
 
 export function PropertyCard({
-  title,
-  location,
+  name,
+  address,
   price,
   image,
   rating,
   featured = false,
 }: PropertyCardProps) {
+  // Function to handle image requirement
+  const getImageSource = (imageUrl: string | undefined) => {
+    if (!imageUrl) {
+      return require("../../assets/icon.png");
+    }
+
+    // If the image is a URL (from Appwrite)
+    if (typeof imageUrl === "string" && imageUrl.startsWith("http")) {
+      return { uri: imageUrl };
+    }
+
+    // If it's a local image (from constants)
+    return imageUrl;
+  };
+
   if (featured) {
     return (
       <TouchableOpacity className="mr-4">
         <View className="relative w-[200px] h-[280px] rounded-3xl overflow-hidden">
-          <Image source={image} className="w-full h-full" resizeMode="cover" />
+          <Image
+            source={getImageSource(image)}
+            className="w-full h-full"
+            resizeMode="cover"
+          />
 
           {/* Rating badge */}
           {rating && (
@@ -43,8 +62,8 @@ export function PropertyCard({
 
           {/* Content overlay */}
           <View className="absolute bottom-4 left-4 right-4">
-            <Text className="text-white text-2xl font-bold">{title}</Text>
-            <Text className="text-white/80 text-lg">{location}</Text>
+            <Text className="text-white text-2xl font-bold">{name}</Text>
+            <Text className="text-white/80 text-lg">{address}</Text>
             <View className="mt-2">
               <Text className="text-white text-xl font-bold">${price}</Text>
             </View>
@@ -55,9 +74,14 @@ export function PropertyCard({
   }
 
   return (
-    <TouchableOpacity>
-      <View className="relative rounded-3xl overflow-hidden">
-        <Image source={image} className="w-full h-[140px]" resizeMode="cover" />
+    <TouchableOpacity className="mb-3">
+      <View className="p-2 bg-white rounded-2xl shadow-md">
+      <View className="relative rounded-xl overflow-hidden">
+        <Image
+          source={getImageSource(image)}
+          className="w-full h-[140px]"
+          resizeMode="cover"
+        />
 
         {/* Rating badge */}
         {rating && (
@@ -68,8 +92,8 @@ export function PropertyCard({
         )}
 
         <View className="p-3 bg-white">
-          <Text className="text-lg font-bold">{title}</Text>
-          <Text className="text-gray-500">{location}</Text>
+          <Text className="text-lg font-bold">{name}</Text>
+          <Text className="text-gray-500">{address}</Text>
           <View className="flex-row justify-between items-center mt-2">
             <Text className="text-[#8B5DFF] text-lg font-bold">${price}</Text>
             <TouchableOpacity>
@@ -79,6 +103,7 @@ export function PropertyCard({
             </TouchableOpacity>
           </View>
         </View>
+      </View>
       </View>
     </TouchableOpacity>
   );
