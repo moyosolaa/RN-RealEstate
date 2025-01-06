@@ -7,6 +7,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList, TabParamList } from "./app/types/navigation";
 import { TabNavigator } from "./app/navigation/TabNavigator";
+import PropertyDetails from "./app/screens/PropertyDetails";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +20,7 @@ export default function Navigation() {
       >
         <Stack.Screen name="Onboarding" component={OnboardingScreen} />
         <Stack.Screen name="Main" component={TabNavigator} />
+        <Stack.Screen name="PropertyDetails" component={PropertyDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

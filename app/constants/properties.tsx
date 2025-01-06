@@ -1,4 +1,4 @@
-export const CATEGORIES = ["All", "House", "Villa", "Apartments", "Other"];
+// export const CATEGORIES = ["All", "House", "Villa", "Apartments", "Other"];
 
 export const FEATURED_PROPERTIES = [
   {
@@ -77,4 +77,16 @@ export const RECOMMENDED_PROPERTIES = [
     rating: 4.9,
   },
   // Add more properties...
+];
+
+export const CATEGORIES = [
+  { title: "All", category: "All" },
+  { title: "Houses", category: "House" },
+  { title: "Condos", category: "Condos" },
+  { title: "Duplexes", category: "Duplexes" },
+  { title: "Studios", category: "Studios" },
+  { title: "Villas", category: "Villa" },
+  { title: "Apartments", category: "Apartments" },
+  { title: "Townhomes", category: "Townhomes" },
+  { title: "Others", category: "Others" },
 ];

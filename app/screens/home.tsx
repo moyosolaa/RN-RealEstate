@@ -4,8 +4,6 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
-  StatusBar,
-  FlatList,
   ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,17 +16,11 @@ import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { TabParamList, RootStackParamList } from "../types/navigation";
 import { useLocalSearchParams } from "expo-router";
-import seed from "../lib/seed";
-
-import {
-  CATEGORIES,
-  FEATURED_PROPERTIES,
-  RECOMMENDED_PROPERTIES,
-} from "../constants/properties";
 import { getLatestProperties, getProperties } from "../lib/appwrite";
 import { useAppwrite } from "../lib/useAppwrite";
-import { useEffect } from "react";
-import { LoadingOverlay } from "../components/LoadingOverlay";
+import { useEffect, useState } from "react";
+import { CATEGORIES } from "../constants/properties";
+import seed from "../lib/seed";
 
 type Props = CompositeScreenProps<
   BottomTabScreenProps<TabParamList, "Home">,
@@ -37,6 +29,7 @@ type Props = CompositeScreenProps<
 
 export default function HomeScreen({ navigation }: Props) {
   const params = useLocalSearchParams<{ query?: string; filter?: string }>();
+  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0].category);
 
   const { data: latestProperties, loading: latestPropertiesLoading } =
     useAppwrite({
@@ -50,29 +43,32 @@ export default function HomeScreen({ navigation }: Props) {
   } = useAppwrite({
     fn: getProperties,
     params: {
-      filter: params.filter!,
+      filter: selectedCategory,
       query: params.query!,
-      limit: 6,
+      // limit: 6,
     },
     skip: true,
   });
 
   useEffect(() => {
     refetch({
-      filter: params.filter!,
+      filter: selectedCategory,
       query: params.query!,
-      limit: 6,
+      // limit: 6,
     });
-  }, [params.filter, params.query]);
+  }, [selectedCategory, params.query]);
+
+  const handleCategoryPress = (category: string) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <SafeAreaView edges={["top"]} className="flex-1 bg-white">
-      {/* <StatusBar barStyle="dark-content" /> */}
       <ScrollView className="flex-1">
         {/* Header */}
 
         {/* <TouchableOpacity
-          onPress={seed}
+          onPress={() => seed()}
           className="items-center justify-center mt-15 py-5 bg-red-400"
         >
           <Text>Seed </Text>
@@ -132,44 +128,47 @@ export default function HomeScreen({ navigation }: Props) {
           </ScrollView>
         </View>
 
-        {/* Categories */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          className="px-4 mt-6"
-        >
-          {CATEGORIES.map((category, index) => (
-            <Chip
-              key={category}
-              label={category}
-              isSelected={index === 0}
-              className="mr-2"
-            />
-          ))}
-        </ScrollView>
 
         {/* Recommended Section */}
         <View className="mt-6 px-4 bg-gray-100 py-5 rounded-t-3xl">
-          <View className="flex-row justify-between items-center mb-4">
+          <View className="flex-row justify-between items-center">
             <Text className="text-xl font-bold">Our Recommendation</Text>
             <TouchableOpacity>
               <Text className="text-purple-500 font-bold">See All</Text>
             </TouchableOpacity>
           </View>
 
+
+          {/* Categories */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className="px-4 my-6"
+          >
+            {CATEGORIES?.map((category) => (
+              <Chip
+                key={category.category}
+                label={category.title}
+                isSelected={category.category === selectedCategory}
+                className="mr-2"
+                onPress={() => handleCategoryPress(category.category)}
+              />
+            ))}
+          </ScrollView>
+
           <View className="flex-row flex-wrap justify-between">
             {loading ? (
-              <ActivityIndicator
-                className="justify-center items-center"
-                size="small"
-                color="#8B5DFF"
-              />
+              <View className="w-full items-center justify-center py-8">
+                <ActivityIndicator size="large" color="#8B5DFF" />
+              </View>
             ) : properties && properties.length > 0 ? (
               properties.map((property) => (
-                <PropertyCard key={property.id} {...property} />
+                <PropertyCard key={property.$id} {...property} />
               ))
             ) : (
-              <Text>No properties available</Text>
+              <View className="w-full items-center justify-center py-8">
+                <Text className="text-gray-500">No properties available</Text>
+              </View>
             )}
           </View>
         </View>

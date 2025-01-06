@@ -22,6 +22,7 @@
     "react": "18.3.1",
     "react-native": "0.76.5",
     "react-native-appwrite": "^0.6.0",
+    "react-native-maps": "^1.20.1",
     "react-native-reanimated": "^3.16.6",
     "react-native-safe-area-context": "^5.0.0",
     "react-native-svg": "^15.10.1",

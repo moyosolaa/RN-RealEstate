@@ -11,7 +11,6 @@ import {
 import * as Linking from "expo-linking";
 import { openAuthSessionAsync } from "expo-web-browser";
 import { Property } from "@babel/types";
-import { AppWriteProperty } from "../types/property";
 
 export const config = {
   platform: "com.moyosola.realestate",
@@ -152,12 +151,12 @@ export async function getProperties({
 }
 
 // write function to get property by id
-export async function getPropertyById({ id }: { id: string }) {
+export async function getPropertyById({ propertyId }: { propertyId: string }) {
   try {
     const result = await databases.getDocument(
       config.databaseId!,
       config.propertiesCollectionId!,
-      id
+      propertyId
     );
     return result;
   } catch (error) {

@@ -149,8 +149,8 @@ async function seed() {
 
       const selectedFacilities = facilities
         .sort(() => 0.5 - Math.random())
-          .slice(0, Math.floor(Math.random() * facilities.length) + 1);
-        console.log(selectedFacilities);
+        .slice(0, Math.floor(Math.random() * facilities.length) + 1);
+      console.log(selectedFacilities);
 
       const image =
         propertiesImages.length - 1 >= i
@@ -173,7 +173,7 @@ async function seed() {
           area: Math.floor(Math.random() * 3000) + 500,
           bedrooms: Math.floor(Math.random() * 5) + 1,
           bathrooms: Math.floor(Math.random() * 5) + 1,
-          rating: Math.floor(Math.random() * 5) + 1,
+          rating: parseFloat((Math.random() * 4 + 1).toFixed(1)), // Rating between 1.0 and 5.0
           facilities: selectedFacilities,
           image: image,
           agent: assignedAgent.$id,
