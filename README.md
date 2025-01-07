@@ -31,7 +31,7 @@ Below are some screenshots of the application:
         <td><img src="assets/screenshots/s6.PNG" alt="Screenshot 6"></td>
     </tr>
     <tr>
-        <td><img src="assets/screenshots/s7.png" alt="Screenshot 7"></td>
+        <td><img src="assets/screenshots/s7.PNG" alt="Screenshot 7"></td>
         <td></td>
         <td></td>
     </tr>
