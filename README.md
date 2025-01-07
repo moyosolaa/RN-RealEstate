@@ -13,19 +13,29 @@ This is a React Native project for a real estate application. The application al
 
 Watch the demo video of the application:
 
-<video width="320" height="240" controls>
-  <source src="./vid.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Demo](https://github.com/moyosolaa/RN-RealEstate/blob/master/vid.mp4)
 
 ## Screenshots
 
 Below are some screenshots of the application:
 
-| ![Screenshot 1](./s1.png) | ![Screenshot 2](./s2.png) | ![Screenshot 3](./s3.png) |
-|---------------------------|---------------------------|---------------------------|
-| ![Screenshot 4](./s4.png) | ![Screenshot 5](./s5.png) | ![Screenshot 6](./s6.png) |
-| ![Screenshot 7](./s7.png) |                           |                           |
+<table>
+    <tr>
+        <td><img src="./s1.png" alt="Screenshot 1"></td>
+        <td><img src="./s2.png" alt="Screenshot 2"></td>
+        <td><img src="./s3.png" alt="Screenshot 3"></td>
+    </tr>
+    <tr>
+        <td><img src="./s4.png" alt="Screenshot 4"></td>
+        <td><img src="./s5.png" alt="Screenshot 5"></td>
+        <td><img src="./s6.png" alt="Screenshot 6"></td>
+    </tr>
+    <tr>
+        <td><img src="./s7.png" alt="Screenshot 7"></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
 ## License
 
