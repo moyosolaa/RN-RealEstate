@@ -13,7 +13,7 @@ This is a React Native project for a real estate application. The application al
 
 Watch the demo video of the application:
 
-![Demo](https://github.com/moyosolaa/RN-RealEstate/blob/master/vid.mp4)
+![Demo](https://github.com/moyosolaa/RN-RealEstate/blob/master/assets/screenshots/vid.mp4)
 
 ## Screenshots
 
@@ -21,17 +21,17 @@ Below are some screenshots of the application:
 
 <table>
     <tr>
-        <td><img src="s1.png" alt="Screenshot 1"></td>
-        <td><img src="./s2.png" alt="Screenshot 2"></td>
-        <td><img src="./s3.png" alt="Screenshot 3"></td>
+        <td><img src="assets/screenshots/s1.png" alt="Screenshot 1"></td>
+        <td><img src="assets/screenshots/s2.png" alt="Screenshot 2"></td>
+        <td><img src="assets/screenshots/s3.png" alt="Screenshot 3"></td>
     </tr>
     <tr>
-        <td><img src="./s4.png" alt="Screenshot 4"></td>
-        <td><img src="./s5.png" alt="Screenshot 5"></td>
-        <td><img src="./s6.png" alt="Screenshot 6"></td>
+        <td><img src="assets/screenshots/s4.png" alt="Screenshot 4"></td>
+        <td><img src="assets/screenshots/s5.png" alt="Screenshot 5"></td>
+        <td><img src="assets/screenshots/s6.png" alt="Screenshot 6"></td>
     </tr>
     <tr>
-        <td><img src="./s7.png" alt="Screenshot 7"></td>
+        <td><img src="assets/screenshots/s7.png" alt="Screenshot 7"></td>
         <td></td>
         <td></td>
     </tr>
