@@ -21,7 +21,7 @@ Below are some screenshots of the application:
 
 <table>
     <tr>
-        <td><img src="./s1.png" alt="Screenshot 1"></td>
+        <td><img src="s1.png" alt="Screenshot 1"></td>
         <td><img src="./s2.png" alt="Screenshot 2"></td>
         <td><img src="./s3.png" alt="Screenshot 3"></td>
     </tr>
